@@ -13,6 +13,12 @@
   }
 }
 
+  .App-logo-f1 {
+    width: 30%;
+    height: 30%;
+    padding-top: 10px;
+  }
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -35,4 +41,56 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/** MAIN LOGO **/
+
+.header-lg {
+  font-size: 35px;
+  font-weight: 200;
+  margin: 10px;
+  font-style: italic;
+}
+
+/** TRACK SELECTOR **/
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.space-around {
+  justify-content: space-around;
+}
+
+.container-sm {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.current-track {
+  font-size: 20px;
+  font-weight: 300;
+  width: 380px;
+}
+
+.arrow-icon {
+  align-self: center;
+}
+
+.grid-container i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+}
+
+/* RESULTS TABLE */
+.table {
+  min-width: 400;
+}
+
+.dark-btn {
+  color: #e6e6e6;
+  background: #141414;
 }
