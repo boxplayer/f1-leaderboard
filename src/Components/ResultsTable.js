@@ -40,13 +40,14 @@ class ResultsTable extends React.Component {
   }
 
   addTime(name, car, time) {
-    let row = createRow(name, car, time)
-    console.log(row)
+    let { data } = this.state
 
-    const newData = this.state.data.leaderboards.time_trials[this.props.currentTrack].leaderboard.push(row)
+    let row = createRow(name, car, time)
+    data.leaderboards.time_trials[this.props.currentTrack].leaderboard.push(row)
+
     this.setState({
       ...this.state,
-      data: newData,
+      data,
       showAddTimeModal: false
     })
   }
@@ -71,7 +72,7 @@ class ResultsTable extends React.Component {
             </TableHead>
             <TableBody>
             {rows.map((row, index) => (
-                <TableRow key={row.name}>
+                <TableRow key={index}>
                   <TableCell component="th" scope="row">
                       {index + 1}
                   </TableCell>
