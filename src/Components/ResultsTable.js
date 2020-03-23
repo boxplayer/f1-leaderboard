@@ -8,30 +8,17 @@ import {
   TableRow,
   Paper
 } from '@material-ui/core'
-import AddTime from './AddTime'
-
-function compare(a, b) {
-  if (a.time > b.time) return 1;
-  if (b.time > a.time) return -1;
-  return 0;
-}
-
-function createRow(name, car, time) {
-  return { name, car, time };
-}
+import { compare } from './helperFunctions'
 
 class ResultsTable extends React.Component {
   constructor(props) {
       super(props)
 
       this.state = {
-        showAddTimeModal: false,
-        showUpdateTimeModal: false,
         data: this.props.data
       }
 
       this.getTrackData = this.getTrackData.bind(this)
-      this.addTime = this.addTime.bind(this)
   }
 
   getTrackData() {
@@ -39,23 +26,8 @@ class ResultsTable extends React.Component {
     return rows.sort(compare)
   }
 
-  addTime(name, car, time) {
-    let { data } = this.state
-
-    let row = createRow(name, car, time)
-    data.leaderboards.time_trials[this.props.currentTrack].leaderboard.push(row)
-
-    this.setState({
-      ...this.state,
-      data,
-      showAddTimeModal: false
-    })
-  }
-
-
   render() {
     const rows = this.getTrackData()
-    const { showAddTimeModal } = this.state
 
     return (
         <div className="container-sm">
@@ -85,14 +57,6 @@ class ResultsTable extends React.Component {
             </TableBody>
           </Table>
           </TableContainer>
-
-          <div>
-            <button onClick={() => this.setState({showAddTimeModal: true})} className="dark-btn">Add Time</button>
-            <button className="dark-btn">Update Time</button>
-            <AddTime 
-              show={showAddTimeModal} 
-              onSubmit={(name, car, time) => (this.addTime(name, car, time))}/>
-          </div>
         </div>
     )
   }

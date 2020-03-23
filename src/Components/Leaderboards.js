@@ -1,27 +1,45 @@
 import React from 'react'
 import TrackSelector from './TrackSelector'
 import ResultsTable from './ResultsTable'
+import AddTime from './AddTime'
+import { createRow } from './helperFunctions'
 
 class Leaderboards extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            currentTrack: 'Monza'
+            currentTrack: 'Monza',
+            showAddTimeModal: false,
+            data: this.props.data
         }
 
         this.selectTrack = this.selectTrack.bind(this)
+        this.addTime = this.addTime.bind(this)
     }
 
     selectTrack(track) {
         this.setState({
-            currentTrack: track
+            currentTrack: track,
+            showAddTimeModal: false
         })
     }
 
+    addTime(name, car, time) {
+        let { data } = this.state
+    
+        let row = createRow(name, car, time)
+        data.leaderboards.time_trials[this.state.currentTrack].leaderboard.push(row)
+    
+        this.setState({
+          ...this.state,
+          data,
+          showAddTimeModal: false
+        })
+      }
+
     render () {
-        const { currentTrack } = this.state
-        const { data } = this.props
+        const { currentTrack, showAddTimeModal, data } = this.state
 
         return (
             <div>
@@ -30,6 +48,14 @@ class Leaderboards extends React.Component {
                     selectTrack={this.selectTrack} 
                 />
                 <ResultsTable currentTrack={currentTrack} data={data}/>
+                <div>
+                    <button onClick={() => this.setState({showAddTimeModal: true})} className="dark-btn">Add Time</button>
+                    <button className="dark-btn">Update Time</button>
+                </div>
+                <AddTime 
+                    show={showAddTimeModal} 
+                    onSubmit={(name, car, time) => (this.addTime(name, car, time))}
+                />
             </div>
         )
     }
