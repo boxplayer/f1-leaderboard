@@ -3,6 +3,7 @@ import TrackSelector from './TrackSelector'
 import ResultsTable from './ResultsTable'
 import AddTime from './AddTime'
 import { createRow } from './helperFunctions'
+import firebase from './../firebaseConfig'
 
 class Leaderboards extends React.Component {
     constructor(props) {
@@ -16,6 +17,17 @@ class Leaderboards extends React.Component {
 
         this.selectTrack = this.selectTrack.bind(this)
         this.addTime = this.addTime.bind(this)
+    }
+
+    componentDidUpdate(prevState) {
+        if (prevState !== this.state) {
+            this.writeUserData();
+        }
+    }
+
+    writeUserData = () => {
+        firebase.database().ref('/').set(this.state.data);
+        console.log('DATA SAVED');
     }
 
     selectTrack(track) {

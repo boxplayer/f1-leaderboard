@@ -61,40 +61,38 @@ class AddTime extends React.Component {
       return null;
     }
     return (
-      <div>
         <form onSubmit={this.handleSubmit}>
-          <input
-            type='text'
-            id='name'
-            className='input-light'
-            placeholder='Name'
-            autoComplete='off'
-            value={this.state.name}
-            onChange={this.handleChange}
-          />
-          <select name="select" onChange={this.setCar}>
-            {cars.map((car, index) => {
-              return (<option value={car} key={index} selected={this.state.team === car}>{car}</option>);
-            })}
-          </select>
-          <input
-            type='text'
-            id='time'
-            className='input-light'
-            placeholder='Time'
-            autoComplete='off'
-            value={this.state.time}
-            onChange={this.handleChange}
-          />
-          <button
-            className='dark-btn'
-            type='submit'
-            disabled={!this.state.name || !this.state.time || !this.state.team}
-          >
-            Submit
-          </button>
+          <div>
+            <input
+              type='text'
+              id='name'
+              placeholder='Name'
+              autoComplete='off'
+              value={this.state.name}
+              onChange={this.handleChange}
+            />
+            <select name="select" onChange={this.setCar}>
+              {cars.map((car, index) => {
+                return (<option value={car} key={index} selected={this.state.team === car}>{car}</option>);
+              })}
+            </select>
+            <input
+              type='text'
+              id='time'
+              placeholder='Time'
+              autoComplete='off'
+              value={this.state.time}
+              onChange={this.handleChange}
+            />
+            <button
+              className='dark-btn'
+              type='submit'
+              disabled={!this.state.name || !this.state.time || !this.state.team}
+            >
+              Submit
+            </button>
+          </div>
         </form>
-      </div>
       
       
     )
