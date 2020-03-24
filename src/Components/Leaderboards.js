@@ -29,10 +29,9 @@ class Leaderboards extends React.Component {
     }
 
     writeUserData = () => {
-        Promise.all(firebase.database().ref('/').set(this.state.data))
+        firebase.database().ref('/').set(this.state.data)
             .then(() => console.log('set the data'))
             .catch((error) => console.error("Error writing to db: ", error))
-            
         console.log('DATA SAVED')
     }
 
