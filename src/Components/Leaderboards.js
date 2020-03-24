@@ -20,9 +20,7 @@ class Leaderboards extends React.Component {
     }
 
     componentDidUpdate(prevState) {
-        console.log(prevState.data === this.state.data)
-        console.log(this.state)
-        if(prevState.data === this.state.data){
+        if(prevState.data !== this.state.data){
             this.writeUserData();
         }
         
