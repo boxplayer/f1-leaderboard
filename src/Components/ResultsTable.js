@@ -19,11 +19,16 @@ class ResultsTable extends React.Component {
       }
 
       this.getTrackData = this.getTrackData.bind(this)
+      this.handleClick = this.handleClick.bind(this)
   }
 
   getTrackData() {
     let rows = this.state.data.leaderboards.time_trials[this.props.currentTrack].leaderboard
     return rows.sort(compare)
+  }
+
+  handleClick(name, car, time) {
+    this.props.onClick(name, car, time)
   }
 
   render() {
@@ -40,6 +45,7 @@ class ResultsTable extends React.Component {
                 <TableCell align="left">Car</TableCell>
                 <TableCell align="left">Time</TableCell>
                 <TableCell align="right">Difference</TableCell>
+                <TableCell align="right">Delete</TableCell>
             </TableRow>
             </TableHead>
             <TableBody>
@@ -52,6 +58,7 @@ class ResultsTable extends React.Component {
                   <TableCell align="left">{row.car}</TableCell>
                   <TableCell align="left">{row.time}</TableCell>
                   <TableCell align="right">0</TableCell>
+                  <TableCell align="right"><button onClick={() => this.handleClick(row.name, row.car, row.time)}>Delete</button></TableCell>
                 </TableRow>
             ))}
             </TableBody>

@@ -21,7 +21,7 @@ class App extends React.Component {
   getUserData = () => {
     let ref = firebase.database().ref('/');
     ref.on('value', snapshot => {
-      const value = snapshot.val();
+      const value = snapshot.val()
       this.setState({
         data: value,
         loading: false

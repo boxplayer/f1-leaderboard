@@ -20,14 +20,20 @@ class Leaderboards extends React.Component {
     }
 
     componentDidUpdate(prevState) {
-        if (prevState !== this.state) {
+        console.log(prevState.data === this.state.data)
+        console.log(this.state)
+        if(prevState.data === this.state.data){
             this.writeUserData();
         }
+        
     }
 
     writeUserData = () => {
-        firebase.database().ref('/').set(this.state.data);
-        console.log('DATA SAVED');
+        Promise.all(firebase.database().ref('/').set(this.state.data))
+            .then(() => console.log('set the data'))
+            .catch((error) => console.error("Error writing to db: ", error))
+            
+        console.log('DATA SAVED')
     }
 
     selectTrack(track) {
@@ -50,6 +56,25 @@ class Leaderboards extends React.Component {
         })
       }
 
+    deleteTime(removeName, removeCar, removeTime) {
+        let { data } = this.state
+    
+        let removeRow = createRow(removeName, removeCar, removeTime)
+        let leaderboard = data.leaderboards.time_trials[this.state.currentTrack].leaderboard
+        let newLeaderboard = leaderboard.filter(({name, car, time}) => {
+            let row = createRow(name, car, time)
+            if(JSON.stringify(row) !== JSON.stringify(removeRow)) return row
+            return null
+        })
+        
+        data.leaderboards.time_trials[this.state.currentTrack].leaderboard = newLeaderboard
+        
+        console.log('setting state')
+        this.setState({
+          data,
+        })
+    }
+
     render () {
         const { currentTrack, showAddTimeModal, data } = this.state
 
@@ -59,7 +84,7 @@ class Leaderboards extends React.Component {
                     currentTrack={currentTrack} 
                     selectTrack={this.selectTrack} 
                 />
-                <ResultsTable currentTrack={currentTrack} data={data}/>
+                <ResultsTable currentTrack={currentTrack} data={data} onClick={(name, car, time) => (this.deleteTime(name, car, time))}/>
                 <div>
                     <button onClick={() => this.setState({showAddTimeModal: true})} className="dark-btn">Add Time</button>
                     <button className="dark-btn">Update Time</button>
