@@ -7,7 +7,7 @@ function TrackSelector ({ selectTrack, currentTrack }) {
         'Bahrain',
         'Baku City',
         'Monza',
-        'Shangai'
+        'Shanghai'
     ]
 
     const nextTrack = (currentTrack, tracks) => {
