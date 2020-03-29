@@ -1,7 +1,6 @@
 import React from 'react'
 import f1_logo from '../f1_logo.svg'
 
-
 function MainLogo () {
     return (
         <div>

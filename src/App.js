@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Leaderboards from './components/Leaderboards.js'
+import Leaderboards from './components/Leaderboards'
 import MainLogo from './components/MainLogo'
 import { database } from './config/Firebase'
 
