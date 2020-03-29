@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import MainLogo from './components/MainLogo'
 import Leaderboards from './components/Leaderboards.js'
+import MainLogo from './components/MainLogo'
 import { database } from './config/Firebase'
 
 class App extends React.Component {
