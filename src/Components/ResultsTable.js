@@ -23,6 +23,7 @@ class ResultsTable extends React.Component {
   }
 
   getTrackData() {
+    console.log(this.props.currentTrack)
     let rows = this.state.data.leaderboards.time_trials[this.props.currentTrack].leaderboard
     return rows.sort(compare)
   }
