@@ -38,10 +38,10 @@ class App extends React.Component {
 
     return (
       <div className="App">
+        <MainLogo />
         {!loading &&
           <Leaderboards data={data}/>
         }
-        <MainLogo />
       </div>
     );
   }
