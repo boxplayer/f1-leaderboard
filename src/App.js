@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import MainLogo from './Components/MainLogo'
-import Leaderboards from './Components/Leaderboards.js'
-import firebase from './firebaseConfig.js'
+import MainLogo from './components/MainLogo'
+import Leaderboards from './components/Leaderboards.js'
+import { database } from './config/Firebase'
 
 class App extends React.Component {
   constructor(props){
@@ -12,6 +12,8 @@ class App extends React.Component {
       data: [],
       loading: true
     }
+
+    this.getUserData = this.getUserData.bind(this)
   }
 
   componentDidMount() {
@@ -19,7 +21,7 @@ class App extends React.Component {
   }
 
   getUserData = () => {
-    let ref = firebase.database().ref('/');
+    let ref = database.ref('/');
     ref.on('value', snapshot => {
       const value = snapshot.val()
       this.setState({
@@ -27,6 +29,7 @@ class App extends React.Component {
         loading: false
       })
     })
+
     console.log('DATA RETRIEVED');
   }
 
@@ -36,7 +39,9 @@ class App extends React.Component {
     return (
       <div className="App">
         <MainLogo />
-        {!loading && <Leaderboards data={data}/>}
+        {!loading &&
+          <Leaderboards data={data}/>
+        }
       </div>
     );
   }

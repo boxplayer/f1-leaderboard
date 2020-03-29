@@ -3,7 +3,7 @@ import TrackSelector from './TrackSelector'
 import ResultsTable from './ResultsTable'
 import AddTime from './AddTime'
 import { createRow } from './helperFunctions'
-import firebase from './../firebaseConfig'
+import firebase from '../config/Firebase'
 
 class Leaderboards extends React.Component {
     constructor(props) {
@@ -19,10 +19,10 @@ class Leaderboards extends React.Component {
         this.addTime = this.addTime.bind(this)
     }
 
-    componentDidUpdate(prevState) {
-        if(prevState.data !== this.state.data){
-            this.writeUserData();
-        }
+    componentDidUpdate() {
+        console.log("WRITING DATA")
+        this.writeUserData();
+
         
     }
 

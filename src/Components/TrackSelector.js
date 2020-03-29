@@ -3,9 +3,11 @@ import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from 'react-icons/ai'
 
 function TrackSelector ({ selectTrack, currentTrack }) {
     const tracks = [
-        'Albert Park',
-        'Bahrain International Circuit',
+        'Australia',
+        'Bahrain',
         'Monza',
+        'Shangai',
+        'Baku City'
     ]
 
     const nextTrack = (currentTrack, tracks) => {
