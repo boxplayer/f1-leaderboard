@@ -7,7 +7,24 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+@font-face {
+  font-family: 'Formula1-normal';
+  src: local('Formula1'), url(./fonts/Formula1-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Formula1-bold';
+  src: local('Formula1'), url(./fonts/Formula1-Bold.ttf) format('truetype');
+}
+
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+button {
+  background: transparent;
+  border: none !important;
 }

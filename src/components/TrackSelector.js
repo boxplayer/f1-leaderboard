@@ -1,14 +1,11 @@
 import React from 'react'
 import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from 'react-icons/ai'
 
-function TrackSelector ({ selectTrack, currentTrack }) {
-    const tracks = [
-        'Australia',
-        'Bahrain',
-        'Baku City',
-        'Monza',
-        'Shanghai'
-    ]
+//onKeyDown={(event) => event.keyCode === 37 ? selectNewTrack() : null }
+
+function TrackSelector ({ selectTrack, currentTrack, data }) {
+
+    const tracks = Object.keys(data.leaderboards.time_trials)
 
     const nextTrack = (currentTrack, tracks) => {
         const index = tracks.indexOf(currentTrack)
@@ -22,23 +19,34 @@ function TrackSelector ({ selectTrack, currentTrack }) {
         return tracks[index-1]
     }
 
+    const selectNewTrack = () => {
+        return selectTrack(prevTrack(currentTrack, tracks))
+    }
+
     return (
         <div className='grid space-around container-sm'>
-            <AiOutlineDoubleLeft   
-                color='red' 
-                className='arrow-icon'
-                size={30}
-                onClick={() => selectTrack(prevTrack(currentTrack, tracks))}
-            />
+            <button
+                onClick={() => selectNewTrack()}
+            >
+                <AiOutlineDoubleLeft   
+                    color='red' 
+                    className='arrow-icon'
+                    size={30}
+                />
+            </button>
             <div className='current-track'>
-                <h3>{currentTrack}</h3>
+                <h3 className='formula1-font' >{currentTrack}</h3>
             </div>
-            <AiOutlineDoubleRight
-                color='red'
-                className='arrow-icon' 
-                size={30}
-                onClick={() => selectTrack(nextTrack(currentTrack,tracks))} 
-            />
+            <button
+                onClick={() => selectNewTrack()}
+            >
+                <AiOutlineDoubleRight
+                    color='red'
+                    className='arrow-icon' 
+                    size={30}
+                    onClick={() => selectTrack(nextTrack(currentTrack,tracks))} 
+                />
+            </button>
         </div>
     )
 }

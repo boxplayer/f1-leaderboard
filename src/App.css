@@ -52,6 +52,14 @@
   font-style: italic;
 }
 
+.formula1-font {
+  font-family: 'Formula1-normal';
+}
+
+.formula1-font-bold {
+  font-family: 'Formula1-bold';
+}
+
 /** TRACK SELECTOR **/
 
 .grid {

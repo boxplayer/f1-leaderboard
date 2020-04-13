@@ -5,7 +5,7 @@ function MainLogo () {
     return (
         <div>
             <img src={f1_logo} className="App-logo-f1" alt="f1_logo" />
-            <h1 className='header-lg'>
+            <h1 className='header-lg formula1-font-bold'>
                 LEADERBOARD
             </h1>
         </div>

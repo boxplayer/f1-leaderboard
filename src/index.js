@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import './fonts/Formula1-Regular.ttf'
+import './fonts/Formula1-Bold.ttf'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(

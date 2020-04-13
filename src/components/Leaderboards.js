@@ -22,8 +22,6 @@ class Leaderboards extends React.Component {
     componentDidUpdate() {
         console.log("WRITING DATA")
         this.writeUserData();
-
-        
     }
 
     writeUserData = () => {
@@ -80,6 +78,7 @@ class Leaderboards extends React.Component {
                 <TrackSelector 
                     currentTrack={currentTrack} 
                     selectTrack={this.selectTrack} 
+                    data={data}
                 />
                 <ResultsTable currentTrack={currentTrack} data={data} onClick={(name, car, time) => (this.deleteTime(name, car, time))}/>
                 <div>
