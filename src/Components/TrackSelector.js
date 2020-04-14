@@ -19,14 +19,18 @@ function TrackSelector ({ selectTrack, currentTrack, data }) {
         return tracks[index-1]
     }
 
-    const selectNewTrack = () => {
+    const selectNextTrack = () => {
+        return selectTrack(nextTrack(currentTrack, tracks))
+    }
+
+    const selectPreviousTrack = () => {
         return selectTrack(prevTrack(currentTrack, tracks))
     }
 
     return (
         <div className='grid space-around container-sm'>
             <button
-                onClick={() => selectNewTrack()}
+                onClick={() => selectNextTrack()}
             >
                 <AiOutlineDoubleLeft   
                     color='red' 
@@ -38,13 +42,12 @@ function TrackSelector ({ selectTrack, currentTrack, data }) {
                 <h3 className='formula1-font' >{currentTrack}</h3>
             </div>
             <button
-                onClick={() => selectNewTrack()}
+                onClick={() => selectPreviousTrack()}
             >
                 <AiOutlineDoubleRight
                     color='red'
                     className='arrow-icon' 
                     size={30}
-                    onClick={() => selectTrack(nextTrack(currentTrack,tracks))} 
                 />
             </button>
         </div>
