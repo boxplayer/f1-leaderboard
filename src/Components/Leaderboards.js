@@ -39,11 +39,16 @@ class Leaderboards extends React.Component {
     }
 
     addTime(name, car, time) {
-        let { data } = this.state
+        let { data, currentTrack } = this.state
     
         let row = createRow(name, car, time)
-        data.leaderboards.time_trials[this.state.currentTrack].leaderboard.push(row)
-    
+        if(data.leaderboards.time_trials[currentTrack].leaderboard === undefined) {
+            let leaderboard = [row]
+            data.leaderboards.time_trials[currentTrack].leaderboard = leaderboard
+        } else {
+            data.leaderboards.time_trials[currentTrack].leaderboard.push(row)
+        }
+
         this.setState({
           ...this.state,
           data,
