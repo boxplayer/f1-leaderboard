@@ -1,16 +1,16 @@
 import React from 'react'
 
 let cars = [
-  'Mercedes-AMG',
-  'Scuderia Ferrari',
-  'Red Bull Racing',
+  'Mercedes',
+  'Ferrari',
+  'Red Bull',
   'Renault', 
-  'Rich Energy Haas', 
+  'Haas', 
   'McLaren',
   'Racing Point',
-  'Alfa Romeo Racing',
-  'Toro Rosso Honda',
-  'Rokit Williams'
+  'Alfa Romeo',
+  'Toro Rosso',
+  'Williams'
 ]
 
 class AddTime extends React.Component {
@@ -19,7 +19,7 @@ class AddTime extends React.Component {
 
     this.state ={
       name: null,
-      team: null,
+      team: 'Mercedes',
       time: null
     }
 
