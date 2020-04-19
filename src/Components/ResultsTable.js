@@ -46,7 +46,7 @@ class ResultsTable extends React.Component {
                 <TableCell align="left">Car</TableCell>
                 <TableCell align="left">Time</TableCell>
                 <TableCell align="right">Difference</TableCell>
-                <TableCell align="right">Delete</TableCell>
+                <TableCell align="right"></TableCell>
             </TableRow>
             </TableHead>
             <TableBody>
@@ -59,7 +59,7 @@ class ResultsTable extends React.Component {
                   <TableCell align="left">{row.car}</TableCell>
                   <TableCell align="left">{row.time}</TableCell>
                   <TableCell align="right">0</TableCell>
-                  <TableCell align="right"><button onClick={() => this.handleClick(row.name, row.car, row.time)}>Delete</button></TableCell>
+                  <TableCell align="right"><button className="round-btn dark-btn" onClick={() => this.handleClick(row.name, row.car, row.time)}>Delete</button></TableCell>
                 </TableRow>
             ))}
             </TableBody>

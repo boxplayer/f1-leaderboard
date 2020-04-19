@@ -62,35 +62,43 @@ class AddTime extends React.Component {
     }
     return (
         <form onSubmit={this.handleSubmit}>
-          <div>
-            <input
-              type='text'
-              id='name'
-              placeholder='Name'
-              autoComplete='off'
-              value={this.state.name}
-              onChange={this.handleChange}
-            />
-            <select name="select" onChange={this.setCar}>
-              {cars.map((car, index) => {
-                return (<option value={car} key={index} selected={this.state.team === car}>{car}</option>);
-              })}
-            </select>
-            <input
-              type='text'
-              id='time'
-              placeholder='Time'
-              autoComplete='off'
-              value={this.state.time}
-              onChange={this.handleChange}
-            />
-            <button
-              className='dark-btn'
-              type='submit'
-              disabled={!this.state.name || !this.state.time || !this.state.team}
-            >
+           <div id='container'>
+            <div className='field'>
+              <input
+                type='text'
+                id='name'
+                placeholder='Name'
+                autoComplete='off'
+                value={this.state.name}
+                onChange={this.handleChange}
+              />
+            </div>
+            <div>
+              <select name='select' onChange={this.setCar}>
+                {cars.map((car, index) => {
+                  return (<option value={car} key={index} selected={this.state.team === car}>{car}</option>);
+                })}
+              </select>
+            </div>
+            <div className='field'>
+              <input
+                type='text'
+                id='time'
+                placeholder='Time'
+                autoComplete='off'
+                value={this.state.time}
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className='field'>
+              <button
+                className='dark-btn round-btn'
+                type='submit'
+                disabled={!this.state.name || !this.state.time || !this.state.team}
+              >
               Submit
             </button>
+          </div>
           </div>
         </form>
       
