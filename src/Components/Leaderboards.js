@@ -69,9 +69,8 @@ class Leaderboards extends React.Component {
         
         data.leaderboards.time_trials[this.state.currentTrack].leaderboard = newLeaderboard
         
-        console.log('setting state')
         this.setState({
-          data,
+          data
         })
     }
 
@@ -85,12 +84,17 @@ class Leaderboards extends React.Component {
                     selectTrack={this.selectTrack} 
                     data={data}
                 />
-                <ResultsTable currentTrack={currentTrack} data={data} onClick={(name, car, time) => (this.deleteTime(name, car, time))}/>
-                <div>
-                    <button onClick={() => this.setState({showAddTimeModal: true})} className="dark-btn">Add Time</button>
-                    <button className="dark-btn">Update Time</button>
-                </div>
-                <AddTime 
+                <ResultsTable 
+                    data={data}
+                    currentTrack={currentTrack}
+                    onClick={(name, car, time) => (this.deleteTime(name, car, time))}
+                />
+                { showAddTimeModal===false && 
+                    <div className='pad-btn'>
+                        <button onClick={() => this.setState({showAddTimeModal: true})} className="round-btn dark-btn">Add Time</button>
+                    </div>
+                }
+                <AddTime
                     show={showAddTimeModal} 
                     onSubmit={(name, car, time) => (this.addTime(name, car, time))}
                 />

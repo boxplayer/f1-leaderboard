@@ -24,7 +24,24 @@ code {
     monospace;
 }
 
+input[type=text] {
+  border:none;
+  border-bottom: 2px solid red;
+  font-size: 15px;
+}
+
+textarea:focus, input:focus{
+  outline: none;
+}
+
 button {
   background: transparent;
   border: none !important;
+}
+
+#container{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding:10px;
 }

@@ -72,7 +72,7 @@
 }
 
 .container-sm {
-  width: 80%;
+  width: 800px;
   margin: 0 auto;
 }
 
@@ -103,7 +103,22 @@
   background: #141414;
 }
 
+.round-btn {
+  border-radius: 3px;
+  font-size: 15px;
+  padding: 3px;
+}
+
 /* ADD TIME */
+
+.field{
+  margin-left:10px;
+  display:inline-block;
+}
+
+.pad-btn {
+  padding: 8px;
+}
 
 .player-inputs input {
   padding: 8px;
