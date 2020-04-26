@@ -14,9 +14,6 @@ class Leaderboards extends React.Component {
             showAddTimeModal: false,
             data: this.props.data
         }
-
-        this.selectTrack = this.selectTrack.bind(this)
-        this.addTime = this.addTime.bind(this)
     }
 
     componentDidUpdate() {
@@ -31,14 +28,14 @@ class Leaderboards extends React.Component {
         console.log('DATA SAVED')
     }
 
-    selectTrack(track) {
+    selectTrack = (track) => {
         this.setState({
             currentTrack: track,
             showAddTimeModal: false
         })
     }
 
-    addTime(name, car, time) {
+    addTime = (name, car, time) => {
         let { data, currentTrack } = this.state
     
         let row = createRow(name, car, time)
@@ -56,7 +53,7 @@ class Leaderboards extends React.Component {
         })
       }
 
-    deleteTime(removeName, removeCar, removeTime) {
+    deleteTime = (removeName, removeCar, removeTime) => {
         let { data } = this.state
     
         let removeRow = createRow(removeName, removeCar, removeTime)

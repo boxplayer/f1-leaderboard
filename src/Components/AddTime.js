@@ -22,20 +22,16 @@ class AddTime extends React.Component {
       team: 'Mercedes',
       time: null
     }
-
-    this.setCar = this.setCar.bind(this)
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  setCar(event) {
+  setCar = (event) => {
     this.setState({
       ...this.state,
       team: event.target.value,
     })
   }
 
-  handleChange(event) {
+  handleChange = (event) => {
     const value = event.target.value;
     this.setState({
       ...this.state,
@@ -43,7 +39,7 @@ class AddTime extends React.Component {
     });
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault()
     const { name, team, time } = this.state
 

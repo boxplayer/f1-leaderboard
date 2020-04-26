@@ -17,18 +17,15 @@ class ResultsTable extends React.Component {
       this.state = {
         data: this.props.data
       }
-
-      this.getTrackData = this.getTrackData.bind(this)
-      this.handleClick = this.handleClick.bind(this)
   }
 
-  getTrackData() {
+  getTrackData = () => {
     let rows = this.state.data.leaderboards.time_trials[this.props.currentTrack].leaderboard
     if(rows === undefined) return []
     return rows.sort(compare)
   }
 
-  handleClick(name, car, time) {
+  handleClick = (name, car, time) => {
     this.props.onClick(name, car, time)
   }
 
